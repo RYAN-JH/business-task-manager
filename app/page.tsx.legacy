@@ -1,0 +1,103 @@
+import Link from 'next/link'
+import { ArrowRight, Brain, Calendar, MessageSquare, BarChart3 } from 'lucide-react'
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Header */}
+      <header className="container mx-auto px-4 py-6">
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Brain className="h-8 w-8 text-blue-600" />
+            <span className="text-2xl font-bold text-gray-900">TaskGenius</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <Link 
+              href="/auth" 
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              로그인
+            </Link>
+            <Link 
+              href="/auth" 
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              시작하기
+            </Link>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <main className="container mx-auto px-4 py-12">
+        <div className="text-center max-w-4xl mx-auto">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            사업자를 위한 <br />
+            <span className="text-blue-600">AI 태스크 매니저</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            브랜딩 전문가와 콘텐츠 크리에이터의 노하우를 담은 AI가 <br />
+            당신의 비즈니스 성장을 위한 맞춤형 업무를 매일 추천해드립니다.
+          </p>
+          
+          <div className="flex items-center justify-center space-x-4 mb-12">
+            <Link 
+              href="/dashboard" 
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2 text-lg font-semibold"
+            >
+              <span>무료로 시작하기</span>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link 
+              href="/demo" 
+              className="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:bg-gray-50 transition-colors text-lg font-semibold"
+            >
+              데모 보기
+            </Link>
+          </div>
+
+          {/* Feature Preview Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <Brain className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">AI 컨설턴트</h3>
+              <p className="text-gray-600">
+                브랜딩과 콘텐츠 전문가의 페르소나가 담긴 AI가 맞춤형 조언을 제공합니다.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <Calendar className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">일일 태스크</h3>
+              <p className="text-gray-600">
+                콘텐츠, 마케팅, CRM 분야별로 오늘 해야 할 최적의 업무를 추천받으세요.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <BarChart3 className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">성과 추적</h3>
+              <p className="text-gray-600">
+                업무 진행률과 콘텐츠 인사이트를 자동으로 분석하고 최적화 방안을 제시합니다.
+              </p>
+            </div>
+          </div>
+
+          {/* Status Badge */}
+          <div className="mt-16">
+            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+              🚀 MVP 개발 중 - 2025년 Q3 출시 예정
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
