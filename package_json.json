@@ -1,0 +1,52 @@
+{
+  "name": "business-task-manager",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-powered task management SaaS for business owners",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:generate": "prisma generate"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "@prisma/client": "^5.15.0",
+    "@supabase/supabase-js": "^2.45.0",
+    "openai": "^4.53.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "lucide-react": "^0.400.0",
+    "clsx": "^2.1.0",
+    "class-variance-authority": "^0.7.0",
+    "date-fns": "^3.6.0",
+    "zod": "^3.23.0",
+    "react-hook-form": "^7.52.0",
+    "@hookform/resolvers": "^3.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "prisma": "^5.15.0"
+  },
+  "keywords": [
+    "saas",
+    "business",
+    "task-management", 
+    "ai",
+    "next.js",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
