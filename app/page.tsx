@@ -24,7 +24,21 @@ export default function HomePage() {
             }}>🧠</div>
             <span style={{ fontSize: '24px', fontWeight: 'bold', color: 'white' }}>TaskGenius</span>
           </div>
-          <div style={{ display: 'flex', gap: '16px' }}>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <Link 
+              href="/chat" 
+              style={{ 
+                color: 'rgba(255,255,255,0.9)', 
+                textDecoration: 'none',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                transition: 'all 0.2s',
+                fontSize: '14px',
+                fontWeight: '500'
+              }}
+            >
+              AI 챗봇
+            </Link>
             <Link 
               href="/auth" 
               style={{ 
@@ -38,7 +52,7 @@ export default function HomePage() {
               로그인
             </Link>
             <Link 
-              href="/auth" 
+              href="/chat" 
               style={{ 
                 backgroundColor: 'rgba(255,255,255,0.2)', 
                 color: 'white',
@@ -84,7 +98,7 @@ export default function HomePage() {
         {/* CTA Buttons */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '80px', flexWrap: 'wrap' }}>
           <Link 
-            href="/dashboard" 
+            href="/chat" 
             style={{ 
               backgroundColor: '#f59e0b',
               color: 'white',
@@ -100,10 +114,10 @@ export default function HomePage() {
               transition: 'all 0.2s'
             }}
           >
-            무료로 시작하기 →
+            🤖 AI와 대화하기 →
           </Link>
           <Link 
-            href="/demo" 
+            href="/chat" 
             style={{ 
               backgroundColor: 'rgba(255,255,255,0.1)',
               color: 'white',
@@ -116,7 +130,88 @@ export default function HomePage() {
               transition: 'all 0.2s'
             }}
           >
-            데모 보기
+            무료 체험하기
+          </Link>
+        </div>
+
+        {/* New AI Chatbot Preview Section */}
+        <div style={{
+          backgroundColor: 'rgba(255,255,255,0.1)',
+          padding: '40px',
+          borderRadius: '20px',
+          marginBottom: '64px',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255,255,255,0.2)'
+        }}>
+          <h2 style={{ 
+            fontSize: '28px', 
+            fontWeight: 'bold', 
+            color: 'white', 
+            marginBottom: '16px' 
+          }}>
+            💬 TaskGenius AI와 대화해보세요
+          </h2>
+          <p style={{ 
+            fontSize: '16px', 
+            color: 'rgba(255,255,255,0.8)', 
+            marginBottom: '24px',
+            lineHeight: '1.5'
+          }}>
+            "새 프로젝트 시작하기", "오늘 할 일 정리", "팀 미팅 스케줄링" 등<br />
+            작업 관리에 관한 모든 것을 AI가 도와드립니다.
+          </p>
+          
+          {/* Sample Chat Bubbles */}
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '12px', 
+            maxWidth: '600px', 
+            margin: '0 auto 24px auto',
+            textAlign: 'left'
+          }}>
+            <div style={{
+              backgroundColor: 'rgba(59, 130, 246, 0.8)',
+              color: 'white',
+              padding: '12px 16px',
+              borderRadius: '18px 18px 4px 18px',
+              alignSelf: 'flex-end',
+              maxWidth: '80%',
+              fontSize: '14px'
+            }}>
+              새 프로젝트를 시작하려는데 어떻게 계획을 세워야 할까요?
+            </div>
+            <div style={{
+              backgroundColor: 'rgba(255,255,255,0.9)',
+              color: '#374151',
+              padding: '12px 16px',
+              borderRadius: '18px 18px 18px 4px',
+              alignSelf: 'flex-start',
+              maxWidth: '80%',
+              fontSize: '14px'
+            }}>
+              새 프로젝트를 시작하시는군요! 🎯<br />
+              프로젝트 목표 설정부터 팀원 배정, 마일스톤 설정까지 단계별로 도와드릴게요!
+            </div>
+          </div>
+
+          <Link 
+            href="/chat"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#3b82f6',
+              color: 'white',
+              textDecoration: 'none',
+              padding: '12px 24px',
+              borderRadius: '10px',
+              fontSize: '16px',
+              fontWeight: '600',
+              transition: 'all 0.2s'
+            }}
+          >
+            지금 AI와 대화하기 ✨
           </Link>
         </div>
 
@@ -137,7 +232,7 @@ export default function HomePage() {
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>🧠</div>
             <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '12px' }}>AI 컨설턴트</h3>
             <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: '1.5' }}>
-              브랜딩과 콘텐츠 전문가의 페르소나가 담긴 AI가 맞춤형 조언을 제공합니다.
+              브랜딩과 콘텐츠 전문가의 페르소나가 담긴 AI가 실시간으로 맞춤형 조언을 제공합니다.
             </p>
           </div>
 
@@ -148,10 +243,10 @@ export default function HomePage() {
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(255,255,255,0.2)'
           }}>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>📅</div>
-            <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '12px' }}>일일 태스크</h3>
+            <div style={{ fontSize: '48px', marginBottom: '16px' }}>💬</div>
+            <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '12px' }}>대화형 플래닝</h3>
             <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: '1.5' }}>
-              콘텐츠, 마케팅, CRM 분야별로 오늘 해야 할 최적의 업무를 추천받으세요.
+              자연스러운 대화로 프로젝트 계획, 작업 분배, 일정 관리를 쉽고 빠르게 해결하세요.
             </p>
           </div>
 
@@ -163,9 +258,9 @@ export default function HomePage() {
             border: '1px solid rgba(255,255,255,0.2)'
           }}>
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>📊</div>
-            <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '12px' }}>성과 추적</h3>
+            <h3 style={{ fontSize: '24px', fontWeight: '600', color: 'white', marginBottom: '12px' }}>스마트 분석</h3>
             <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: '1.5' }}>
-              업무 진행률과 콘텐츠 인사이트를 자동으로 분석하고 최적화 방안을 제시합니다.
+              업무 진행률과 팀 성과를 자동으로 분석하고 최적화된 다음 액션을 제안합니다.
             </p>
           </div>
         </div>
@@ -190,7 +285,7 @@ export default function HomePage() {
               borderRadius: '50%', 
               marginRight: '8px' 
             }}></div>
-            🚀 MVP 개발 중 - 2025년 Q3 출시 예정
+            🚀 AI 챗봇 베타 버전 체험 가능 - 지금 사용해보세요!
           </div>
         </div>
       </main>
