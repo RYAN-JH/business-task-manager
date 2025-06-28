@@ -72,9 +72,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       onMouseLeave?.(e);
     };
 
+    // 기본 글래스모피즘 클래스 추가
+    const defaultClassName = props.className ? `glass-button ${props.className}` : 'glass-button';
+
     return (
       <button
         ref={ref}
+        className={defaultClassName}
         style={combinedStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

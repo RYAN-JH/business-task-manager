@@ -6,65 +6,172 @@
 */
 
 :root {
---background: 0 0% 100%;
---foreground: 240 10% 3.9%;
---card: 0 0% 100%;
---card-foreground: 240 10% 3.9%;
---popover: 0 0% 100%;
---popover-foreground: 240 10% 3.9%;
---primary: 240 5.9% 10%;
---primary-foreground: 0 0% 98%;
---secondary: 240 4.8% 95.9%;
---secondary-foreground: 240 5.9% 10%;
---muted: 240 4.8% 95.9%;
---muted-foreground: 240 3.8% 46.1%;
---accent: 240 4.8% 95.9%;
---accent-foreground: 240 5.9% 10%;
+/* 애플 글래스모피즘 색상 시스템 */
+--glass-bg-primary: rgba(255, 255, 255, 0.25);
+--glass-bg-secondary: rgba(255, 255, 255, 0.15);
+--glass-bg-tertiary: rgba(255, 255, 255, 0.08);
+--glass-border: rgba(255, 255, 255, 0.3);
+--glass-shadow: rgba(0, 0, 0, 0.1);
+--glass-shadow-lg: rgba(0, 0, 0, 0.15);
+--backdrop-blur: 20px;
+--backdrop-blur-sm: 10px;
+--backdrop-blur-lg: 40px;
+
+/* 애플 색상 시스템 */
+--background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+--foreground: 0 0% 5%;
+--card: rgba(255, 255, 255, 0.25);
+--card-foreground: 0 0% 5%;
+--popover: rgba(255, 255, 255, 0.3);
+--popover-foreground: 0 0% 5%;
+--primary: 218 81% 75%;
+--primary-foreground: 0 0% 0%;
+--secondary: rgba(255, 255, 255, 0.2);
+--secondary-foreground: 0 0% 10%;
+--muted: rgba(255, 255, 255, 0.15);
+--muted-foreground: 0 0% 25%;
+--accent: rgba(255, 255, 255, 0.2);
+--accent-foreground: 0 0% 5%;
 --destructive: 0 84.2% 60.2%;
 --destructive-foreground: 0 0% 98%;
---border: 240 5.9% 90%;
---input: 240 5.9% 90%;
---ring: 240 5.9% 10%;
---radius: 0.5rem;
+--border: rgba(255, 255, 255, 0.3);
+--input: rgba(255, 255, 255, 0.2);
+--ring: 218 81% 75%;
+--radius: 12px;
 }
+
 .dark {
---background: 240 10% 3.9%;
---foreground: 0 0% 98%;
---card: 240 10% 3.9%;
---card-foreground: 0 0% 98%;
---popover: 240 10% 3.9%;
---popover-foreground: 0 0% 98%;
---primary: 0 0% 98%;
---primary-foreground: 240 5.9% 10%;
---secondary: 240 3.7% 15.9%;
---secondary-foreground: 0 0% 98%;
---muted: 240 3.7% 15.9%;
---muted-foreground: 240 5% 64.9%;
---accent: 240 3.7% 15.9%;
---accent-foreground: 0 0% 98%;
+/* 다크모드 글래스모피즘 */
+--glass-bg-primary: rgba(0, 0, 0, 0.25);
+--glass-bg-secondary: rgba(0, 0, 0, 0.15);
+--glass-bg-tertiary: rgba(0, 0, 0, 0.08);
+--glass-border: rgba(255, 255, 255, 0.1);
+--glass-shadow: rgba(0, 0, 0, 0.3);
+--glass-shadow-lg: rgba(0, 0, 0, 0.5);
+
+--background: linear-gradient(135deg, #2D1B69 0%, #11998e 50%, #38ef7d 100%);
+--foreground: 0 0% 95%;
+--card: rgba(0, 0, 0, 0.25);
+--card-foreground: 0 0% 95%;
+--popover: rgba(0, 0, 0, 0.3);
+--popover-foreground: 0 0% 95%;
+--primary: 160 51% 49%;
+--primary-foreground: 0 0% 5%;
+--secondary: rgba(255, 255, 255, 0.1);
+--secondary-foreground: 0 0% 95%;
+--muted: rgba(255, 255, 255, 0.08);
+--muted-foreground: 0 0% 70%;
+--accent: rgba(255, 255, 255, 0.1);
+--accent-foreground: 0 0% 95%;
 --destructive: 0 62.8% 30.6%;
 --destructive-foreground: 0 0% 98%;
---border: 240 3.7% 15.9%;
---input: 240 3.7% 15.9%;
---ring: 240 4.9% 83.9%;
+--border: rgba(255, 255, 255, 0.1);
+--input: rgba(255, 255, 255, 0.1);
+--ring: 160 51% 49%;
 }
+
 * {
-border-color: hsl(var(--border));
+border-color: var(--glass-border);
 }
+
 body {
 color: hsl(var(--foreground));
-background: hsl(var(--background));
+background: var(--background);
+background-attachment: fixed;
+min-height: 100vh;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
+/* 글래스모피즘 스타일 */
+.glass {
+background: var(--glass-bg-primary);
+backdrop-filter: blur(var(--backdrop-blur));
+-webkit-backdrop-filter: blur(var(--backdrop-blur));
+border: 1px solid var(--glass-border);
+box-shadow: 0 4px 6px var(--glass-shadow);
+}
+
+.glass-secondary {
+background: var(--glass-bg-secondary);
+backdrop-filter: blur(var(--backdrop-blur-sm));
+-webkit-backdrop-filter: blur(var(--backdrop-blur-sm));
+border: 1px solid var(--glass-border);
+box-shadow: 0 2px 4px var(--glass-shadow);
+}
+
+.glass-tertiary {
+background: var(--glass-bg-tertiary);
+backdrop-filter: blur(var(--backdrop-blur-sm));
+-webkit-backdrop-filter: blur(var(--backdrop-blur-sm));
+border: 1px solid var(--glass-border);
+}
+
+.glass-hover {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-hover:hover {
+background: var(--glass-bg-secondary);
+backdrop-filter: blur(var(--backdrop-blur-lg));
+-webkit-backdrop-filter: blur(var(--backdrop-blur-lg));
+transform: translateY(-2px);
+box-shadow: 0 8px 12px var(--glass-shadow-lg);
+}
+
+.glass-card {
+background: var(--glass-bg-primary);
+backdrop-filter: blur(var(--backdrop-blur));
+-webkit-backdrop-filter: blur(var(--backdrop-blur));
+border: 1px solid var(--glass-border);
+border-radius: var(--radius);
+box-shadow: 
+  0 4px 6px var(--glass-shadow),
+  0 0 0 1px var(--glass-border);
+}
+
+.glass-input {
+background: var(--glass-bg-secondary);
+backdrop-filter: blur(var(--backdrop-blur-sm));
+-webkit-backdrop-filter: blur(var(--backdrop-blur-sm));
+border: 1px solid var(--glass-border);
+transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+background: var(--glass-bg-primary);
+border-color: hsl(var(--primary));
+box-shadow: 0 0 0 2px hsla(var(--primary), 0.3);
+}
+
+.glass-button {
+background: var(--glass-bg-primary);
+backdrop-filter: blur(var(--backdrop-blur));
+-webkit-backdrop-filter: blur(var(--backdrop-blur));
+border: 1px solid var(--glass-border);
+transition: all 0.2s ease;
+}
+
+.glass-button:hover {
+background: var(--glass-bg-secondary);
+transform: translateY(-1px);
+box-shadow: 0 4px 8px var(--glass-shadow-lg);
+}
+
+.glass-button:active {
+transform: translateY(0);
+}
+
 /* 커스텀 스타일 */
 .gradient-text {
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
 }
+
 .card-hover {
-transition: all 0.3s ease;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .card-hover:hover {
 transform: translateY(-2px);
 }

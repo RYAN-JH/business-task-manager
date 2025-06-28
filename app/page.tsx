@@ -77,18 +77,16 @@ export default function HomePage() {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      backgroundColor: colors.background.primary,
       fontFamily: typography.fontFamily.primary 
     }}>
       {/* Header */}
-      <header style={{ 
+      <header className="glass-card" style={{ 
         padding: `${spacing[6]} 0`,
-        borderBottom: `1px solid ${colors.primary.gray[200]}`,
-        backgroundColor: colors.background.primary,
+        border: 'none',
+        borderBottom: `1px solid var(--glass-border)`,
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        backdropFilter: 'blur(8px)',
       }}>
         <Container>
           <nav style={{ 
@@ -230,10 +228,9 @@ export default function HomePage() {
       {/* Learning AI System Highlight */}
       <section style={{ 
         padding: `${spacing[20]} 0`,
-        backgroundColor: colors.background.secondary,
       }}>
         <Container>
-          <Card variant="elevated" style={{ position: 'relative', overflow: 'hidden' }}>
+          <Card variant="elevated" className="glass-card glass-hover" style={{ position: 'relative', overflow: 'hidden' }}>
             <div style={{
               position: 'absolute',
               top: spacing[4],

@@ -10,9 +10,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>
+      <body className="glass-background">
         <SessionProvider>
-          {children}
+          <div className="min-h-screen relative">
+            {children}
+          </div>
         </SessionProvider>
       </body>
     </html>

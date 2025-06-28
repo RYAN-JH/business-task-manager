@@ -10,7 +10,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ variant = 'default', padding = 'md', children, style, ...props }, ref) => {
+  ({ variant = 'default', padding = 'md', children, style, className, ...props }, ref) => {
     const baseStyle = cardStyles.base;
     const variantStyle = variant !== 'default' ? cardStyles.variants[variant] : {};
     
@@ -28,8 +28,11 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ...style,
     };
 
+    // 기본 글래스모피즘 클래스 추가
+    const defaultClassName = className ? `glass-card ${className}` : 'glass-card';
+
     return (
-      <div ref={ref} style={combinedStyle} {...props}>
+      <div ref={ref} className={defaultClassName} style={combinedStyle} {...props}>
         {children}
       </div>
     );

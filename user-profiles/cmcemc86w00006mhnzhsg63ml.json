@@ -1,8 +1,8 @@
 {
   "userId": "cmcemc86w00006mhnzhsg63ml",
   "createdAt": "2025-06-27T13:18:15.418Z",
-  "lastUpdated": "2025-06-27T21:58:14.641Z",
-  "version": 12,
+  "lastUpdated": "2025-06-28T04:03:20.545Z",
+  "version": 22,
   "businessProfile": {
     "targetCustomer": "정기결제는 안하고 싶어서요. 주요 타겟 고객은 20-40대 남녀 입니다.",
     "mainProducts": "주력 제품은 <네거티브> 애플리케이션이에요.",
@@ -17,20 +17,20 @@
     "vocabularySize": 3,
     "sentenceComplexity": "simple",
     "tone": {
-      "formality": 50,
+      "formality": 10,
       "enthusiasm": 0,
       "directness": 50,
       "politeness": 0
     },
     "frequentWords": {
-      "뭐부터": 1,
-      "하면": 1,
-      "좋을까": 1
+      "매출을": 1,
+      "해결하고": 1,
+      "싶어": 1
     },
     "frequentPhrases": {
-      "뭐부터 하면": 1,
-      "뭐부터 하면 좋을까": 1,
-      "하면 좋을까": 1
+      "매출을 해결하고": 1,
+      "매출을 해결하고 싶어": 1,
+      "해결하고 싶어": 1
     },
     "frequentEndings": {},
     "writingPatterns": {
@@ -38,38 +38,51 @@
       "emojiFrequency": 0,
       "preferredEmojis": [],
       "usesExclamation": false,
-      "usesQuestion": true,
+      "usesQuestion": false,
       "usesEllipsis": false,
       "usesBrackets": false,
       "usesQuotes": false
     },
     "linguisticTraits": {
       "preferredConjunctions": [],
-      "preferredInterjections": [],
+      "preferredInterjections": [
+        "어"
+      ],
       "preferredFillers": [],
       "questionStyle": "direct"
     },
-    "topicInterests": {},
+    "topicInterests": {
+      "비즈니스": {
+        "frequency": 1,
+        "averageEngagement": 11,
+        "keyTerms": [
+          "매출을",
+          "해결하고",
+          "싶어"
+        ]
+      }
+    },
     "temporalPatterns": {
       "preferredCommunicationTime": [],
       "responseSpeed": "thoughtful",
       "messageFrequency": 1
     },
-    "lastAnalyzed": "2025-06-27T21:58:14.641Z",
+    "lastAnalyzed": "2025-06-28T04:03:20.545Z",
     "totalMessagesAnalyzed": 1,
     "confidenceScore": 2,
     "evolutionTrend": "stable"
   },
   "conversationSummary": {
     "totalConversations": 0,
-    "totalMessages": 22,
-    "averageSessionLength": 1.0048828125,
-    "lastConversationDate": "2025-06-27T21:58:14.641Z",
+    "totalMessages": 32,
+    "averageSessionLength": 1.000004768371582,
+    "lastConversationDate": "2025-06-28T04:03:20.545Z",
     "topDiscussedTopics": {
-      "콘텐츠": 5,
+      "콘텐츠": 7,
       "브랜딩": 1,
-      "비즈니스": 1,
-      "고객": 2
+      "비즈니스": 2,
+      "고객": 2,
+      "성장": 1
     },
     "conversationEvolution": [
       {
@@ -92,7 +105,7 @@
   "learnedPatterns": {
     "preferredResponseLength": "short",
     "preferredDetailLevel": "detailed",
-    "interactionStyle": "professional",
+    "interactionStyle": "casual",
     "feedbackPatterns": {
       "positiveResponses": [],
       "negativeIndicators": [],
@@ -114,7 +127,8 @@
     ],
     "painPoints": [
       "고민이에요",
-      "고민해봐요"
+      "고민해봐요",
+      "문제부터"
     ],
     "successPatterns": [],
     "avoidancePatterns": []
@@ -126,9 +140,9 @@
     "goalTracker": []
   },
   "profileQuality": {
-    "dataRichness": 26,
+    "dataRichness": 28,
     "consistencyScore": 2,
-    "predictionAccuracy": 26,
-    "lastQualityCheck": "2025-06-27T21:58:14.641Z"
+    "predictionAccuracy": 28,
+    "lastQualityCheck": "2025-06-28T04:03:20.545Z"
   }
 }

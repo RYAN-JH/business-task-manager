@@ -17,6 +17,17 @@ interface Message {
   persona?: string;
   suggestions?: string[];
   feedback?: 'HELPFUL' | 'NOT_HELPFUL' | 'VERY_HELPFUL';
+  debugInfo?: {
+    systemPrompt?: string;
+    promptSources?: {
+      userProfile?: any;
+      conversationContext?: any;
+      referenceQuestions?: string[];
+      adminInfo?: any;
+      personaInfo?: any;
+    };
+    responseMetadata?: any;
+  };
 }
 
 interface Persona {
@@ -36,6 +47,7 @@ const TaskGeniusChatbot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
+  const [showDebugPanel, setShowDebugPanel] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -247,7 +259,8 @@ const TaskGeniusChatbot: React.FC = () => {
           content: data.response || '응답을 생성할 수 없습니다.',
           timestamp: new Date(),
           persona: currentPersona,
-          suggestions: data.suggestions || []
+          suggestions: data.suggestions || [],
+          debugInfo: data.debugInfo || null
         };
         setMessages(prev => [...prev, aiMessage]);
       } else {
@@ -333,34 +346,51 @@ const TaskGeniusChatbot: React.FC = () => {
   }
 
   return (
-    <div style={{
+    <div className="glass-card" style={{
       display: 'flex',
       flexDirection: 'column',
       height: 'calc(100vh - 76px)',
-      background: colors.background.primary,
-      borderRadius: borderRadius.lg,
-      boxShadow: shadows.xl,
+      borderRadius: 'var(--radius)',
       overflow: 'hidden',
       fontFamily: typography.fontFamily.primary,
       position: 'relative'
     }}>
       {/* Header */}
-      <div style={{
-        background: colors.background.primary,
+      <div className="glass-secondary" style={{
         padding: spacing[5],
-        borderBottom: `1px solid ${colors.primary.gray[200]}`,
-        boxShadow: shadows.sm
+        borderBottom: `1px solid var(--glass-border)`,
+        position: 'relative'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: spacing[3], marginBottom: spacing[4] }}>
-          <div style={{ fontSize: '24px' }}>{currentPersonaInfo.icon}</div>
-          <div>
-            <Typography variant="h5" style={{ margin: 0 }}>
-              {currentPersonaInfo.name}
-            </Typography>
-            <Typography variant="caption" color={colors.primary.gray[600]} style={{ margin: 0 }}>
-              {currentPersonaInfo.description}
-            </Typography>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: spacing[4] }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: spacing[3] }}>
+            <div style={{ fontSize: '24px' }}>{currentPersonaInfo.icon}</div>
+            <div>
+              <Typography variant="h5" style={{ margin: 0 }}>
+                {currentPersonaInfo.name}
+              </Typography>
+              <Typography variant="caption" color={colors.primary.gray[600]} style={{ margin: 0 }}>
+                {currentPersonaInfo.description}
+              </Typography>
+            </div>
           </div>
+          
+          {/* 디버그 토글 버튼 */}
+          <button
+            className="glass-tertiary glass-hover"
+            onClick={() => setShowDebugPanel(!showDebugPanel)}
+            style={{
+              padding: `${spacing[2]} ${spacing[3]}`,
+              borderRadius: 'var(--radius)',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: typography.fontSize.xs,
+              color: showDebugPanel ? 'hsl(var(--primary))' : 'hsl(var(--muted-foreground))',
+              transition: 'all 0.2s ease',
+            }}
+            title="디버그 정보 토글"
+          >
+            🐛 Debug
+          </button>
         </div>
         
         {/* 페르소나 선택 */}
@@ -368,20 +398,19 @@ const TaskGeniusChatbot: React.FC = () => {
           {personas.map(persona => (
             <button
               key={persona.id}
+              className={currentPersona === persona.id ? "glass-button" : "glass-tertiary glass-hover"}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: spacing[2],
                 padding: `${spacing[2]} ${spacing[3]}`,
-                borderRadius: borderRadius.lg,
-                border: `2px solid ${currentPersona === persona.id ? persona.color : colors.primary.gray[200]}`,
-                background: currentPersona === persona.id ? `${persona.color}15` : colors.background.primary,
-                color: currentPersona === persona.id ? persona.color : colors.primary.gray[600],
+                borderRadius: 'var(--radius)',
+                border: `2px solid ${currentPersona === persona.id ? persona.color : 'var(--glass-border)'}`,
+                color: currentPersona === persona.id ? persona.color : 'hsl(var(--muted-foreground))',
                 cursor: 'pointer',
                 fontSize: typography.fontSize.xs,
                 fontWeight: typography.fontWeight.medium,
-                transition: animations.transition.base,
-                boxShadow: currentPersona === persona.id ? shadows.md : shadows.sm,
+                transition: 'all 0.2s ease',
               }}
               onClick={() => switchPersona(persona.id)}
             >
@@ -397,7 +426,6 @@ const TaskGeniusChatbot: React.FC = () => {
         flex: 1,
         padding: spacing[5],
         overflowY: 'auto',
-        background: colors.background.secondary
       }}>
         {messages.length === 0 && (
           <div style={{ textAlign: 'center', marginTop: spacing[16] }}>
@@ -441,17 +469,12 @@ const TaskGeniusChatbot: React.FC = () => {
             }}
           >
             <div style={{ maxWidth: '70%' }}>
-              <div style={{
+              <div className={message.type === 'USER' ? 'glass-button' : 'glass-secondary'} style={{
                 padding: `${spacing[3]} ${spacing[4]}`,
-                borderRadius: borderRadius.xl,
-                background: message.type === 'USER' 
-                  ? colors.primary.black
-                  : colors.background.primary,
-                color: message.type === 'USER' ? colors.primary.white : colors.primary.gray[800],
-                boxShadow: shadows.md,
+                borderRadius: 'var(--radius)',
+                color: message.type === 'USER' ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))',
                 fontSize: typography.fontSize.sm,
                 lineHeight: typography.lineHeight.relaxed,
-                border: message.type === 'AI' ? `1px solid ${colors.primary.gray[200]}` : 'none',
                 whiteSpace: 'pre-wrap',
                 wordWrap: 'break-word',
                 wordBreak: 'break-word',
@@ -469,16 +492,15 @@ const TaskGeniusChatbot: React.FC = () => {
                   justifyContent: 'flex-start'
                 }}>
                   <button
+                    className={message.feedback === 'VERY_HELPFUL' ? 'glass-button' : 'glass-tertiary glass-hover'}
                     style={{
                       padding: `${spacing[1]} ${spacing[2]}`,
-                      borderRadius: borderRadius.md,
+                      borderRadius: 'var(--radius)',
                       border: 'none',
-                      background: message.feedback === 'VERY_HELPFUL' ? colors.accent.yellow : colors.background.tertiary,
-                      color: message.feedback === 'VERY_HELPFUL' ? colors.primary.black : colors.primary.gray[600],
+                      color: message.feedback === 'VERY_HELPFUL' ? 'hsl(var(--primary))' : 'hsl(var(--muted-foreground))',
                       cursor: 'pointer',
                       fontSize: typography.fontSize.xs,
-                      transition: animations.transition.base,
-                      boxShadow: shadows.sm,
+                      transition: 'all 0.2s ease',
                       display: 'flex',
                       alignItems: 'center',
                       gap: spacing[1],
@@ -489,16 +511,15 @@ const TaskGeniusChatbot: React.FC = () => {
                     <Star size={12} />
                   </button>
                   <button
+                    className={message.feedback === 'HELPFUL' ? 'glass-button' : 'glass-tertiary glass-hover'}
                     style={{
                       padding: `${spacing[1]} ${spacing[2]}`,
-                      borderRadius: borderRadius.md,
+                      borderRadius: 'var(--radius)',
                       border: 'none',
-                      background: message.feedback === 'HELPFUL' ? colors.semantic.success : colors.background.tertiary,
-                      color: message.feedback === 'HELPFUL' ? colors.primary.white : colors.primary.gray[600],
+                      color: message.feedback === 'HELPFUL' ? 'hsl(var(--primary))' : 'hsl(var(--muted-foreground))',
                       cursor: 'pointer',
                       fontSize: typography.fontSize.xs,
-                      transition: animations.transition.base,
-                      boxShadow: shadows.sm,
+                      transition: 'all 0.2s ease',
                       display: 'flex',
                       alignItems: 'center',
                       gap: spacing[1],
@@ -509,16 +530,15 @@ const TaskGeniusChatbot: React.FC = () => {
                     <ThumbsUp size={12} />
                   </button>
                   <button
+                    className={message.feedback === 'NOT_HELPFUL' ? 'glass-button' : 'glass-tertiary glass-hover'}
                     style={{
                       padding: `${spacing[1]} ${spacing[2]}`,
-                      borderRadius: borderRadius.md,
+                      borderRadius: 'var(--radius)',
                       border: 'none',
-                      background: message.feedback === 'NOT_HELPFUL' ? colors.semantic.error : colors.background.tertiary,
-                      color: message.feedback === 'NOT_HELPFUL' ? colors.primary.white : colors.primary.gray[600],
+                      color: message.feedback === 'NOT_HELPFUL' ? 'hsl(var(--destructive))' : 'hsl(var(--muted-foreground))',
                       cursor: 'pointer',
                       fontSize: typography.fontSize.xs,
-                      transition: animations.transition.base,
-                      boxShadow: shadows.sm,
+                      transition: 'all 0.2s ease',
                       display: 'flex',
                       alignItems: 'center',
                       gap: spacing[1],
@@ -528,6 +548,98 @@ const TaskGeniusChatbot: React.FC = () => {
                   >
                     <ThumbsDown size={12} />
                   </button>
+                </div>
+              )}
+              
+              {/* 디버그 정보 패널 */}
+              {message.type === 'AI' && message.debugInfo && showDebugPanel && (
+                <div className="glass-tertiary" style={{
+                  marginTop: spacing[3],
+                  padding: spacing[4],
+                  borderRadius: 'var(--radius)',
+                  fontSize: typography.fontSize.xs,
+                  lineHeight: typography.lineHeight.relaxed,
+                }}>
+                  <Typography variant="caption" style={{ 
+                    margin: `0 0 ${spacing[2]} 0`, 
+                    fontWeight: typography.fontWeight.semibold,
+                    color: 'hsl(var(--primary))'
+                  }}>
+                    🐛 Debug Information
+                  </Typography>
+                  
+                  {/* 프롬프트 출처 정보 */}
+                  {message.debugInfo.promptSources && (
+                    <div style={{ marginBottom: spacing[3] }}>
+                      <div style={{ fontWeight: typography.fontWeight.medium, marginBottom: spacing[1] }}>
+                        📊 Prompt Sources:
+                      </div>
+                      {message.debugInfo.promptSources.userProfile && (
+                        <div style={{ marginLeft: spacing[2], marginBottom: spacing[1] }}>
+                          • User Profile: {JSON.stringify(message.debugInfo.promptSources.userProfile).substring(0, 100)}...
+                        </div>
+                      )}
+                      {message.debugInfo.promptSources.conversationContext && (
+                        <div style={{ marginLeft: spacing[2], marginBottom: spacing[1] }}>
+                          • Conversation Context: {JSON.stringify(message.debugInfo.promptSources.conversationContext).substring(0, 100)}...
+                        </div>
+                      )}
+                      {message.debugInfo.promptSources.referenceQuestions && message.debugInfo.promptSources.referenceQuestions.length > 0 && (
+                        <div style={{ marginLeft: spacing[2], marginBottom: spacing[1] }}>
+                          • Reference Questions ({message.debugInfo.promptSources.referenceQuestions.length}):
+                          {message.debugInfo.promptSources.referenceQuestions.map((q: string, i: number) => (
+                            <div key={i} style={{ marginLeft: spacing[3], fontSize: '10px' }}>
+                              {i + 1}. {q.substring(0, 80)}...
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {message.debugInfo.promptSources.adminInfo && (
+                        <div style={{ marginLeft: spacing[2], marginBottom: spacing[1] }}>
+                          • Admin Info: {JSON.stringify(message.debugInfo.promptSources.adminInfo).substring(0, 100)}...
+                        </div>
+                      )}
+                      {message.debugInfo.promptSources.personaInfo && (
+                        <div style={{ marginLeft: spacing[2], marginBottom: spacing[1] }}>
+                          • Persona Info: {JSON.stringify(message.debugInfo.promptSources.personaInfo).substring(0, 100)}...
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  
+                  {/* 시스템 프롬프트 */}
+                  {message.debugInfo.systemPrompt && (
+                    <div style={{ marginBottom: spacing[3] }}>
+                      <div style={{ fontWeight: typography.fontWeight.medium, marginBottom: spacing[1] }}>
+                        📝 System Prompt:
+                      </div>
+                      <div style={{ 
+                        backgroundColor: 'var(--glass-bg-tertiary)',
+                        padding: spacing[2],
+                        borderRadius: 'var(--radius)',
+                        fontSize: '10px',
+                        fontFamily: 'monospace',
+                        whiteSpace: 'pre-wrap',
+                        maxHeight: '200px',
+                        overflowY: 'auto',
+                        border: '1px solid var(--glass-border)'
+                      }}>
+                        {message.debugInfo.systemPrompt}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* 응답 메타데이터 */}
+                  {message.debugInfo.responseMetadata && (
+                    <div>
+                      <div style={{ fontWeight: typography.fontWeight.medium, marginBottom: spacing[1] }}>
+                        ⚡ Response Metadata:
+                      </div>
+                      <div style={{ marginLeft: spacing[2], fontSize: '10px' }}>
+                        {JSON.stringify(message.debugInfo.responseMetadata, null, 2)}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -541,16 +653,13 @@ const TaskGeniusChatbot: React.FC = () => {
             justifyContent: 'flex-start',
             marginBottom: spacing[4]
           }}>
-            <div style={{
+            <div className="glass-secondary" style={{
               display: 'flex',
               alignItems: 'center',
               gap: spacing[2],
               padding: `${spacing[3]} ${spacing[4]}`,
-              background: colors.background.primary,
-              borderRadius: borderRadius.xl,
-              boxShadow: shadows.md,
+              borderRadius: 'var(--radius)',
               maxWidth: '200px',
-              border: `1px solid ${colors.primary.gray[200]}`,
             }}>
               <Bot size={16} color={currentPersonaInfo.color} />
               <div style={{ display: 'flex', gap: '2px' }}>
@@ -584,13 +693,11 @@ const TaskGeniusChatbot: React.FC = () => {
       </div>
 
       {/* Input Area */}
-      <div style={{
+      <div className="glass-secondary" style={{
         padding: `${spacing[4]} ${spacing[5]} ${spacing[4]} ${spacing[5]}`,
-        background: colors.background.primary,
-        borderTop: `1px solid ${colors.primary.gray[200]}`,
-        boxShadow: shadows.sm,
-        borderBottomLeftRadius: borderRadius.lg,
-        borderBottomRightRadius: borderRadius.lg,
+        borderTop: `1px solid var(--glass-border)`,
+        borderBottomLeftRadius: 'var(--radius)',
+        borderBottomRightRadius: 'var(--radius)',
         marginTop: 'auto'
       }}>
         <div style={{ display: 'flex', gap: spacing[2], alignItems: 'flex-end' }}>
@@ -601,17 +708,15 @@ const TaskGeniusChatbot: React.FC = () => {
             onChange={(e) => setInputText(e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder={`${currentPersonaInfo.name}에게 메시지를 보내세요...`}
+            className="glass-input"
             style={{
               flex: 1,
               padding: `${spacing[3]} ${spacing[4]}`,
-              borderRadius: borderRadius.xl,
-              border: `2px solid ${colors.primary.gray[200]}`,
-              background: colors.background.primary,
+              borderRadius: 'var(--radius)',
               fontSize: typography.fontSize.sm,
               outline: 'none',
-              transition: animations.transition.base,
               fontFamily: typography.fontFamily.primary,
-              boxShadow: shadows.sm,
+              color: 'hsl(var(--foreground))',
             }}
             disabled={isTyping}
             onFocus={(e) => {

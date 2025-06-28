@@ -121,7 +121,7 @@ const LearningDashboard: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-        <Card style={{ maxWidth: '400px', textAlign: 'center' }}>
+        <Card className="glass-card" style={{ maxWidth: '400px', textAlign: 'center' }}>
           <CardContent style={{ padding: spacing[8] }}>
             <User size={64} color={colors.primary.gray[400]} style={{ margin: '0 auto', marginBottom: spacing[4] }} />
             <Typography variant="h3" style={{ marginBottom: spacing[2] }}>
@@ -163,7 +163,6 @@ const LearningDashboard: React.FC = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: colors.background.secondary,
       fontFamily: typography.fontFamily.primary
     }}>
       <Container style={{ padding: `${spacing[12]} ${spacing[6]}` }}>

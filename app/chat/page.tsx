@@ -50,10 +50,8 @@ export default function ChatPage() {
     left: 0,
     right: 0,
     zIndex: 50,
-    background: '#ffffff',
     padding: '16px 0',
-    borderBottom: '1px solid #d0d0d0',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+    borderBottom: '1px solid var(--glass-border)',
   };
 
   const overlayContentStyles = {
@@ -109,40 +107,34 @@ export default function ChatPage() {
   };
 
   const homeLinkStyles = {
-    color: '#555555',
+    color: 'hsl(var(--foreground))',
     textDecoration: 'none',
     fontSize: '13px',
     padding: '8px 16px',
     borderRadius: '8px',
-    background: '#ffffff',
-    border: '1px solid #d0d0d0',
     transition: 'all 0.15s ease',
     cursor: 'pointer',
     fontWeight: '500',
     letterSpacing: '0.01em',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
   };
 
   const onlineStatusStyles = {
-    background: '#f8f9fa',
-    border: '1px solid #d0d0d0',
     borderRadius: '8px',
     padding: '6px 12px',
     display: 'flex',
     alignItems: 'center',
     gap: '6px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
   };
 
   const onlineDotStyles = {
     width: '6px',
     height: '6px',
-    background: '#2c2c2c',
+    background: 'hsl(var(--primary))',
     borderRadius: '50%'
   };
 
   const onlineTextStyles = {
-    color: '#2c2c2c',
+    color: 'hsl(var(--foreground))',
     fontSize: '11px',
     fontWeight: '500' as const
   };
@@ -156,11 +148,8 @@ export default function ChatPage() {
     bottom: '160px',
     right: '20px',
     zIndex: 40,
-    background: '#ffffff',
-    borderRadius: '8px',
+    borderRadius: '12px',
     padding: '20px',
-    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
-    border: '1px solid #d0d0d0',
     maxWidth: '280px',
     display: 'none'
   };
@@ -168,14 +157,14 @@ export default function ChatPage() {
   const tipsTitleStyles = {
     fontSize: '14px',
     fontWeight: '500' as const,
-    color: '#2c2c2c',
+    color: 'hsl(var(--foreground))',
     margin: '0 0 12px 0',
     letterSpacing: '0.01em'
   };
 
   const tipsListStyles = {
     fontSize: '12px',
-    color: '#555555',
+    color: 'hsl(var(--muted-foreground))',
     lineHeight: '1.5',
     margin: 0,
     paddingLeft: '16px',
@@ -190,12 +179,10 @@ export default function ChatPage() {
     zIndex: 50,
     width: '48px',
     height: '48px',
-    background: '#2c2c2c',
-    color: '#ffffff',
+    color: 'hsl(var(--primary-foreground))',
     border: 'none',
-    borderRadius: '8px',
+    borderRadius: '12px',
     cursor: 'pointer',
-    boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
     fontSize: '18px',
     display: 'flex',
     alignItems: 'center',
@@ -262,7 +249,7 @@ export default function ChatPage() {
       }} />
 
       {/* 브랜딩 전문가 소개 오버레이 */}
-      <div style={overlayStyles}>
+      <div className="glass-card" style={overlayStyles}>
         <div style={overlayContentStyles} className="overlay-content">
           <div style={overlayLeftStyles}>
             <div style={overlayIconStyles}>
@@ -281,6 +268,7 @@ export default function ChatPage() {
           <div style={overlayRightStyles}>
             <Link 
               href="/"
+              className="glass-button"
               style={homeLinkStyles}
               onMouseEnter={(e) => handleHomeLinkHover(e, true)}
               onMouseLeave={(e) => handleHomeLinkHover(e, false)}
@@ -288,7 +276,7 @@ export default function ChatPage() {
               🏠 홈으로
             </Link>
             
-            <div style={onlineStatusStyles}>
+            <div className="glass-tertiary" style={onlineStatusStyles}>
               <div style={onlineDotStyles}></div>
               <span style={onlineTextStyles}>
                 실시간 연결
@@ -305,9 +293,9 @@ export default function ChatPage() {
 
       {/* 하단 브랜딩 정보 */}
       <div 
+        className="glass-card tips-container"
         style={tipsContainerStyles}
         id="brandingTips"
-        className="tips-container"
       >
         <h4 style={tipsTitleStyles}>
           💡 효과적인 질문 팁
@@ -323,8 +311,8 @@ export default function ChatPage() {
       {/* 팁 토글 버튼 */}
       <button
         onClick={handleTipsToggle}
+        className="glass-button tips-button"
         style={tipsButtonStyles}
-        className="tips-button"
         title="상담 팁 보기"
         onMouseEnter={(e) => handleTipsButtonHover(e, true)}
         onMouseLeave={(e) => handleTipsButtonHover(e, false)}
