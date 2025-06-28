@@ -2,14 +2,46 @@
 
 import TaskGeniusChatbot from '../../components/TaskGeniusChatbot';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function ChatPage() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (status === 'loading') return // 로딩 중이면 대기
+    if (!session) {
+      router.push('/auth/signin') // 로그인하지 않은 경우 로그인 페이지로 리다이렉트
+    }
+  }, [session, status, router])
+
   const handleTipsToggle = () => {
     const tips = document.getElementById('brandingTips');
     if (tips) {
       tips.style.display = tips.style.display === 'none' ? 'block' : 'none';
     }
   };
+
+  // 로딩 중이거나 세션이 없으면 로딩 표시
+  if (status === 'loading' || !session) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#f5f5f5',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+      }}>
+        <div style={{ textAlign: 'center', color: '#666666' }}>
+          <div style={{ fontSize: '18px', marginBottom: '8px' }}>로딩 중...</div>
+          <div style={{ fontSize: '14px' }}>잠시만 기다려주세요</div>
+        </div>
+      </div>
+    )
+  }
 
   // 완전한 인라인 스타일 정의
   const overlayStyles = {
@@ -18,12 +50,10 @@ export default function ChatPage() {
     left: 0,
     right: 0,
     zIndex: 50,
-    background: 'rgba(59, 130, 246, 0.95)',
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)', // Safari 호환성
-    padding: '12px 0',
-    borderBottom: '2px solid rgba(255, 255, 255, 0.2)',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+    background: '#ffffff',
+    padding: '16px 0',
+    borderBottom: '1px solid #d0d0d0',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
   };
 
   const overlayContentStyles = {
@@ -46,27 +76,30 @@ export default function ChatPage() {
   const overlayIconStyles = {
     width: '24px',
     height: '24px',
-    background: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: '6px',
+    background: '#2c2c2c',
+    borderRadius: '8px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '16px'
+    fontSize: '14px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
   };
 
   const overlayTitleStyles = {
-    color: 'white',
+    color: '#2c2c2c',
     fontSize: '14px',
-    fontWeight: '600' as const,
+    fontWeight: '500' as const,
     margin: 0,
-    lineHeight: '1.2'
+    lineHeight: '1.2',
+    letterSpacing: '0.01em'
   };
 
   const overlaySubtitleStyles = {
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: '#666666',
     fontSize: '12px',
     margin: 0,
-    lineHeight: '1.2'
+    lineHeight: '1.2',
+    fontWeight: '400'
   };
 
   const overlayRightStyles = {
@@ -76,37 +109,40 @@ export default function ChatPage() {
   };
 
   const homeLinkStyles = {
-    color: 'rgba(255, 255, 255, 0.9)',
+    color: '#555555',
     textDecoration: 'none',
-    fontSize: '14px',
-    padding: '6px 12px',
-    borderRadius: '6px',
-    background: 'rgba(255, 255, 255, 0.1)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    transition: 'all 0.2s ease',
-    cursor: 'pointer'
+    fontSize: '13px',
+    padding: '8px 16px',
+    borderRadius: '8px',
+    background: '#ffffff',
+    border: '1px solid #d0d0d0',
+    transition: 'all 0.15s ease',
+    cursor: 'pointer',
+    fontWeight: '500',
+    letterSpacing: '0.01em',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
   };
 
   const onlineStatusStyles = {
-    background: 'rgba(34, 197, 94, 0.2)',
-    border: '1px solid rgba(34, 197, 94, 0.3)',
-    borderRadius: '20px',
-    padding: '4px 8px',
+    background: '#f8f9fa',
+    border: '1px solid #d0d0d0',
+    borderRadius: '8px',
+    padding: '6px 12px',
     display: 'flex',
     alignItems: 'center',
-    gap: '4px'
+    gap: '6px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
   };
 
   const onlineDotStyles = {
     width: '6px',
     height: '6px',
-    background: '#22c55e',
-    borderRadius: '50%',
-    animation: 'pulse 2s infinite'
+    background: '#2c2c2c',
+    borderRadius: '50%'
   };
 
   const onlineTextStyles = {
-    color: 'white',
+    color: '#2c2c2c',
     fontSize: '11px',
     fontWeight: '500' as const
   };
@@ -120,31 +156,31 @@ export default function ChatPage() {
     bottom: '160px',
     right: '20px',
     zIndex: 40,
-    background: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(10px)',
-    WebkitBackdropFilter: 'blur(10px)',
-    borderRadius: '12px',
-    padding: '16px',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-    border: '1px solid rgba(0, 0, 0, 0.1)',
+    background: '#ffffff',
+    borderRadius: '8px',
+    padding: '20px',
+    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
+    border: '1px solid #d0d0d0',
     maxWidth: '280px',
     display: 'none'
   };
 
   const tipsTitleStyles = {
     fontSize: '14px',
-    fontWeight: '600' as const,
-    color: '#374151',
-    margin: '0 0 8px 0'
+    fontWeight: '500' as const,
+    color: '#2c2c2c',
+    margin: '0 0 12px 0',
+    letterSpacing: '0.01em'
   };
 
   const tipsListStyles = {
     fontSize: '12px',
-    color: '#6b7280',
-    lineHeight: '1.4',
+    color: '#555555',
+    lineHeight: '1.5',
     margin: 0,
     paddingLeft: '16px',
-    listStyle: 'disc'
+    listStyle: 'disc',
+    fontWeight: '400'
   };
 
   const tipsButtonStyles = {
@@ -154,35 +190,37 @@ export default function ChatPage() {
     zIndex: 50,
     width: '48px',
     height: '48px',
-    background: '#3b82f6',
-    color: 'white',
+    background: '#2c2c2c',
+    color: '#ffffff',
     border: 'none',
-    borderRadius: '50%',
+    borderRadius: '8px',
     cursor: 'pointer',
-    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
-    fontSize: '20px',
+    boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+    fontSize: '18px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    transition: 'all 0.3s ease'
+    transition: 'all 0.15s ease'
   };
 
   // 호버 이벤트 핸들러
   const handleHomeLinkHover = (e: React.MouseEvent<HTMLAnchorElement>, isEnter: boolean) => {
     if (isEnter) {
-      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+      e.currentTarget.style.background = '#f8f9fa';
+      e.currentTarget.style.borderColor = '#b0b0b0';
     } else {
-      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+      e.currentTarget.style.background = '#ffffff';
+      e.currentTarget.style.borderColor = '#d0d0d0';
     }
   };
 
   const handleTipsButtonHover = (e: React.MouseEvent<HTMLButtonElement>, isEnter: boolean) => {
     if (isEnter) {
-      e.currentTarget.style.background = '#1d4ed8';
-      e.currentTarget.style.transform = 'scale(1.05)';
+      e.currentTarget.style.background = '#1a1a1a';
+      e.currentTarget.style.transform = 'translateY(-1px)';
     } else {
-      e.currentTarget.style.background = '#3b82f6';
-      e.currentTarget.style.transform = 'scale(1)';
+      e.currentTarget.style.background = '#2c2c2c';
+      e.currentTarget.style.transform = 'translateY(0)';
     }
   };
 
@@ -232,10 +270,10 @@ export default function ChatPage() {
             </div>
             <div>
               <p style={overlayTitleStyles}>
-                브랜딩 전문가 AI와 실시간 상담 중
+                atozit & moment.ryan과 실시간 상담 중
               </p>
               <p style={overlaySubtitleStyles}>
-                Claude 3 Haiku • 무제한 질문 • 개인화된 브랜드 전략
+                Claude 3 Haiku • 무제한 질문 • Threads & Instagram 통합 전략
               </p>
             </div>
           </div>
@@ -277,8 +315,8 @@ export default function ChatPage() {
         <ul style={tipsListStyles}>
           <li style={{ marginBottom: '4px' }}>구체적인 업종과 상황 설명</li>
           <li style={{ marginBottom: '4px' }}>현재 고민이나 목표 명시</li>
-          <li style={{ marginBottom: '4px' }}>타겟 고객층 정보 포함</li>
-          <li style={{ marginBottom: '4px' }}>예산이나 리소스 제약 언급</li>
+          <li style={{ marginBottom: '4px' }}>타겟 고객층과 브랜드 정보 포함</li>
+          <li style={{ marginBottom: '4px' }}>Threads/Instagram 현황과 목표 공유</li>
         </ul>
       </div>
 
@@ -287,7 +325,7 @@ export default function ChatPage() {
         onClick={handleTipsToggle}
         style={tipsButtonStyles}
         className="tips-button"
-        title="브랜딩 팁 보기"
+        title="상담 팁 보기"
         onMouseEnter={(e) => handleTipsButtonHover(e, true)}
         onMouseLeave={(e) => handleTipsButtonHover(e, false)}
       >

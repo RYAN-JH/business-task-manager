@@ -1,0 +1,31 @@
+Google OAuth 설정 시 복사해서 붙여넣을 값들
+
+=== 프로젝트 정보 ===
+프로젝트 이름: TaskGenius-Auth
+
+=== OAuth 동의 화면 ===
+앱 이름: TaskGenius
+사용자 지원 이메일: [본인 이메일 주소]
+개발자 연락처 정보: [본인 이메일 주소]
+
+=== OAuth 클라이언트 ID ===
+이름: TaskGenius Web Client
+애플리케이션 유형: 웹 애플리케이션
+
+=== 승인된 JavaScript 출처 ===
+http://localhost:3000
+http://localhost:3001
+
+=== 승인된 리디렉션 URI ===
+http://localhost:3000/api/auth/callback/google
+http://localhost:3001/api/auth/callback/google
+
+=== 테스트 사용자 ===
+[본인 이메일 주소]
+
+=== 프로덕션용 추가 URI (배포 시) ===
+승인된 JavaScript 출처:
+https://yourdomain.com
+
+승인된 리디렉션 URI:
+https://yourdomain.com/api/auth/callback/google

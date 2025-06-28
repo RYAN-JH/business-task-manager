@@ -3,6 +3,8 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["@prisma/client"]
   },
+  output: 'standalone',
+  poweredByHeader: false,
   images: {
     domains: [
       'localhost',

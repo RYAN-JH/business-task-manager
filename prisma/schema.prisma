@@ -1,0 +1,293 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// NextAuth.js required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          String    @default("USER") // USER, ADMIN, SUPER_ADMIN
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts            Account[]
+  sessions            Session[]
+  extendedProfile     ExtendedProfile?
+  conversations       Conversation[]
+  messageFeedbacks    MessageFeedback[]
+  learningInsights    LearningInsight[]
+  userProfile         UserProfile?
+  questionLogs        QuestionLog[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// TaskGenius specific models
+model ExtendedProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // 기본 정보
+  businessName        String?
+  industry            String?
+  businessType        String?
+  businessStage       String?
+  yearsInBusiness     Int?
+  
+  // 규모 정보
+  teamSize            String?
+  monthlyRevenue      String?
+  currentCustomers    String?
+  
+  // 목표 및 도전
+  primaryGoals        String? // 쉼표로 구분된 문자열
+  biggestChallenges   String? // 쉼표로 구분된 문자열
+  targetRevenue       String?
+  growthTimeline      String?
+  
+  // 마케팅 및 브랜딩
+  currentMarketing    String? // 쉼표로 구분된 문자열
+  marketingBudget     String?
+  brandingExperience  String?
+  competitorAnalysis  String?
+  
+  // 타겟 고객
+  targetAudience      String?
+  customerAge         String?
+  customerGender      String?
+  customerIncome      String?
+  customerLocation    String?
+  customerBehavior    String?
+  
+  // 디지털 존재감
+  hasWebsite          Boolean  @default(false)
+  socialMediaPresence String? // 쉼표로 구분된 문자열
+  contentCreation     String?
+  seoKnowledge        String?
+  
+  // 운영 및 시스템
+  operationalSystems  String? // 쉼표로 구분된 문자열
+  techComfort        String?
+  automationLevel    String?
+  dataTracking       String? // 쉼표로 구분된 문자열
+  
+  // 재정 관리
+  financialTracking   String?
+  profitMargins      String?
+  cashFlowChallenges String? // 쉼표로 구분된 문자열
+  investmentAreas    String? // 쉼표로 구분된 문자열
+  
+  // 학습 및 개발
+  learningStyle      String?
+  skillDevelopment   String? // 쉼표로 구분된 문자열
+  networkingLevel    String?
+  mentorshipNeeds    String? // 쉼표로 구분된 문자열
+  
+  // 미래 계획
+  fiveYearVision     String?
+  exitStrategy       String?
+  legacyGoals        String?
+  
+  // 프로필 완성도
+  completionScore    Float    @default(0.0)
+  lastUpdated        DateTime @default(now())
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("extended_profiles")
+}
+
+model Conversation {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  title       String?
+  isActive    Boolean  @default(true)
+  lastMessage String?
+  messageCount Int     @default(0)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  messages    Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String   @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+  type           String // "USER" 또는 "AI"
+  content        String
+  persona        String?
+  suggestions    String? // 쉼표로 구분된 문자열
+  
+  createdAt      DateTime @default(now())
+  
+  feedbacks      MessageFeedback[]
+
+  @@map("messages")
+}
+
+model MessageFeedback {
+  id        String   @id @default(cuid())
+  messageId String
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  feedback  String // "HELPFUL", "NOT_HELPFUL", "VERY_HELPFUL"
+  createdAt DateTime @default(now())
+
+  @@unique([messageId, userId])
+  @@map("message_feedbacks")
+}
+
+model LearningInsight {
+  id       String   @id @default(cuid())
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  category String   // 'branding', 'content', 'general'
+  insight  String
+  confidence Float
+  
+  createdAt DateTime @default(now())
+
+  @@map("learning_insights")
+}
+
+model UserProfile {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // 최우선 정보 (우선순위 1)
+  businessType          String?
+  targetCustomer        String?
+  mainProducts          String?
+  currentChallenges     String? // JSON 문자열
+  
+  // 중요 정보 (우선순위 2)
+  industry              String?
+  companySize           String?
+  experienceLevel       String?
+  preferredPersona      String?
+  
+  // 보조 정보 (우선순위 3)
+  communicationStyle    String?
+  responseLength        String?
+  brandVoice            String?
+  competitiveAdvantage  String?
+  brandValues           String? // JSON 문자열
+  
+  // 메타 정보
+  completionLevel       Int      @default(0)
+  lastUpdated           DateTime @default(now())
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@map("user_profiles")
+}
+
+model QuestionLog {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  questionId String
+  question   String
+  asked      Boolean  @default(false)
+  answered   Boolean  @default(false)
+  response   String?
+  
+  askedAt    DateTime?
+  answeredAt DateTime?
+  createdAt  DateTime @default(now())
+
+  @@map("question_logs")
+}
+
+// Admin 페르소나 강화 질문 관리
+model AdminPersonaQuestion {
+  id           String   @id @default(cuid())
+  personaType  String   // 'moment.ryan' | 'atozit'
+  category     String   // 'strategy' | 'content' | 'challenge' | 'general'
+  questionText String
+  
+  // 컨텍스트 정보
+  triggerKeywords String? // JSON 배열로 저장
+  userContext     String? // 어떤 상황에서 사용되는지
+  
+  // 사용 통계
+  usageCount      Int      @default(0)
+  successRate     Float    @default(0.0) // 응답 품질 기반
+  lastUsed        DateTime?
+  
+  // AI 생성 정보
+  generatedBy     String   @default("claude") // 'claude' | 'manual' | 'hybrid'
+  sourceMessage   String?  // 생성의 근거가 된 사용자 메시지
+  generatedAt     DateTime @default(now())
+  
+  // 평가 및 개선
+  adminFeedback   String?  // Admin의 질문 평가
+  responseQuality Float?   // 이 질문으로 받은 응답의 품질 점수
+  isActive        Boolean  @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admin_persona_questions")
+}

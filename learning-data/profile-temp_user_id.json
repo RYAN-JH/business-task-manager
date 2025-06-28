@@ -1,0 +1,41 @@
+{
+  "userId": "temp_user_id",
+  "lastUpdated": "2025-06-26T18:42:08.166Z",
+  "name": "",
+  "email": "",
+  "businessName": "Threads",
+  "businessType": "온라인",
+  "industry": "콘텐츠 제작/마케팅",
+  "experienceLevel": "",
+  "goals": [],
+  "challenges": [],
+  "interests": [],
+  "aiPreferences": {
+    "preferredPersona": "adaptive",
+    "communicationStyle": "balanced",
+    "responseLength": "medium",
+    "formalityLevel": "professional",
+    "includeExamples": true,
+    "includeActionItems": true
+  },
+  "completionStatus": {
+    "basicInfo": false,
+    "businessOperation": false,
+    "customerDetails": false,
+    "marketing": false,
+    "brandIdentity": false,
+    "personalCharacteristics": false,
+    "workStyle": false,
+    "goals": false,
+    "contentSocialMedia": false,
+    "expertise": false
+  },
+  "completionPercentage": 6,
+  "businessOperation": {
+    "monthlyRevenue": {
+      "range": "1500만원 안팎",
+      "lastUpdated": "2025-06-26T18:15:58.529Z"
+    }
+  },
+  "customerDetails": {}
+}

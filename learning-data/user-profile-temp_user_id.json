@@ -1,0 +1,520 @@
+{
+  "userId": "temp_user_id",
+  "createdAt": "2025-06-26T15:00:00.049Z",
+  "interactions": [
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:00:00.049Z",
+      "satisfactionLevel": "very_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 195,
+        "conversationStyle": "direct"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:00:18.547Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "content",
+        "responseLength": 159,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:00:36.992Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 603,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:01:18.033Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 829,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:02:10.384Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 718,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:03:44.070Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 761,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:04:11.026Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 734,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:11:20.347Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 939,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:12:00.166Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 950,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:13:14.390Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 938,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:14:05.112Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 876,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:14:46.586Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 943,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:15:47.853Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "content",
+        "responseLength": 47,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:15:50.098Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "content",
+        "responseLength": 650,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:17:09.978Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 573,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:32:20.827Z",
+      "preferredPersona": "branding",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 249,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:32:34.157Z",
+      "preferredPersona": "branding",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 408,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:44:11.217Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "content",
+        "responseLength": 51,
+        "conversationStyle": "direct"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T15:50:08.834Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "content",
+        "responseLength": 75,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T16:36:30.667Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 334,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T16:50:38.652Z",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 193,
+        "conversationStyle": "direct"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:10:41.689Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "content",
+        "responseLength": 240,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:12:09.213Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 545,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:13:45.261Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 735,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:14:38.161Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 728,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:16:47.055Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "content",
+        "responseLength": 684,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:18:51.907Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 286,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:20:14.633Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 549,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:22:28.119Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 540,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:23:04.096Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "not_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 619,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T17:26:26.334Z",
+      "preferredPersona": "branding",
+      "satisfactionLevel": "very_helpful",
+      "interactionPattern": {
+        "messageType": "general",
+        "responseLength": 118,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T18:42:39.089Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "very_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 981,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T18:43:02.813Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 981,
+        "conversationStyle": "interactive"
+      }
+    },
+    {
+      "userId": "temp_user_id",
+      "timestamp": "2025-06-26T18:43:03.909Z",
+      "preferredPersona": "content",
+      "satisfactionLevel": "very_helpful",
+      "interactionPattern": {
+        "messageType": "branding",
+        "responseLength": 981,
+        "conversationStyle": "interactive"
+      }
+    }
+  ],
+  "preferences": {
+    "preferredPersona": "content",
+    "communicationStyle": "balanced",
+    "satisfactionTrend": [
+      {
+        "date": "2025-06-26T15:00:00.049Z",
+        "score": 1
+      },
+      {
+        "date": "2025-06-26T15:00:18.548Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T15:00:36.992Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:01:18.033Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T15:02:10.384Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:03:44.070Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:04:11.026Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:11:20.347Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:12:00.166Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:13:14.390Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T15:14:05.112Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:14:46.587Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:15:47.854Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:15:50.098Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:17:09.978Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T15:32:20.827Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T15:32:34.157Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T15:44:11.217Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T15:50:08.834Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T16:36:30.668Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T16:50:38.652Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T17:10:41.689Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T17:12:09.213Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T17:13:45.261Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T17:14:38.161Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T17:16:47.055Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T17:18:51.907Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T17:20:14.633Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T17:22:28.119Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T17:23:04.096Z",
+        "score": 0.3
+      },
+      {
+        "date": "2025-06-26T17:26:26.335Z",
+        "score": 1
+      },
+      {
+        "date": "2025-06-26T18:42:39.089Z",
+        "score": 1
+      },
+      {
+        "date": "2025-06-26T18:43:02.813Z",
+        "score": 0.7
+      },
+      {
+        "date": "2025-06-26T18:43:03.909Z",
+        "score": 1
+      }
+    ]
+  }
+}

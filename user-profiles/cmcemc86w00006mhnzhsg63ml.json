@@ -1,0 +1,134 @@
+{
+  "userId": "cmcemc86w00006mhnzhsg63ml",
+  "createdAt": "2025-06-27T13:18:15.418Z",
+  "lastUpdated": "2025-06-27T21:58:14.641Z",
+  "version": 12,
+  "businessProfile": {
+    "targetCustomer": "정기결제는 안하고 싶어서요. 주요 타겟 고객은 20-40대 남녀 입니다.",
+    "mainProducts": "주력 제품은 <네거티브> 애플리케이션이에요.",
+    "currentChallenges": [
+      "매출이 안나와서 고민이에요. 앱은 한번 구매하면 끝인 일회성 구매 모델이라서 계속 신규 고객을 유치해야만 하는게 너무 고되네요."
+    ],
+    "completionLevel": 38,
+    "lastUpdated": "2025-06-27T11:40:33.693Z"
+  },
+  "writingStyle": {
+    "averageMessageLength": 11,
+    "vocabularySize": 3,
+    "sentenceComplexity": "simple",
+    "tone": {
+      "formality": 50,
+      "enthusiasm": 0,
+      "directness": 50,
+      "politeness": 0
+    },
+    "frequentWords": {
+      "뭐부터": 1,
+      "하면": 1,
+      "좋을까": 1
+    },
+    "frequentPhrases": {
+      "뭐부터 하면": 1,
+      "뭐부터 하면 좋을까": 1,
+      "하면 좋을까": 1
+    },
+    "frequentEndings": {},
+    "writingPatterns": {
+      "usesEmojis": false,
+      "emojiFrequency": 0,
+      "preferredEmojis": [],
+      "usesExclamation": false,
+      "usesQuestion": true,
+      "usesEllipsis": false,
+      "usesBrackets": false,
+      "usesQuotes": false
+    },
+    "linguisticTraits": {
+      "preferredConjunctions": [],
+      "preferredInterjections": [],
+      "preferredFillers": [],
+      "questionStyle": "direct"
+    },
+    "topicInterests": {},
+    "temporalPatterns": {
+      "preferredCommunicationTime": [],
+      "responseSpeed": "thoughtful",
+      "messageFrequency": 1
+    },
+    "lastAnalyzed": "2025-06-27T21:58:14.641Z",
+    "totalMessagesAnalyzed": 1,
+    "confidenceScore": 2,
+    "evolutionTrend": "stable"
+  },
+  "conversationSummary": {
+    "totalConversations": 0,
+    "totalMessages": 22,
+    "averageSessionLength": 1.0048828125,
+    "lastConversationDate": "2025-06-27T21:58:14.641Z",
+    "topDiscussedTopics": {
+      "콘텐츠": 5,
+      "브랜딩": 1,
+      "비즈니스": 1,
+      "고객": 2
+    },
+    "conversationEvolution": [
+      {
+        "date": "2025-06-27T13:18:15.422Z",
+        "topicsShift": [
+          "콘텐츠",
+          "브랜딩",
+          "비즈니스",
+          "고객"
+        ],
+        "styleChanges": {
+          "formalityChange": 0,
+          "enthusiasmChange": 0,
+          "complexityChange": 0
+        },
+        "newPatterns": []
+      }
+    ]
+  },
+  "learnedPatterns": {
+    "preferredResponseLength": "short",
+    "preferredDetailLevel": "detailed",
+    "interactionStyle": "professional",
+    "feedbackPatterns": {
+      "positiveResponses": [],
+      "negativeIndicators": [],
+      "engagementTriggers": []
+    }
+  },
+  "personalizationInsights": {
+    "communicationPreferences": {
+      "directness": 50,
+      "supportiveness": 0,
+      "technicalDepth": 0,
+      "creativityLevel": 0
+    },
+    "motivationFactors": [
+      "진정성",
+      "성장",
+      "커뮤니티",
+      "실용성"
+    ],
+    "painPoints": [
+      "고민이에요",
+      "고민해봐요"
+    ],
+    "successPatterns": [],
+    "avoidancePatterns": []
+  },
+  "contextMemory": {
+    "ongoingProjects": [],
+    "previousSolutions": [],
+    "personalReferences": [],
+    "goalTracker": []
+  },
+  "profileQuality": {
+    "dataRichness": 26,
+    "consistencyScore": 2,
+    "predictionAccuracy": 26,
+    "lastQualityCheck": "2025-06-27T21:58:14.641Z"
+  }
+}
